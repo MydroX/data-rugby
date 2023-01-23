@@ -10,7 +10,13 @@ export default function Pitch() {
   const [points, setPoints] = useState([]);
 
   const addKickPointOnClick = ({pageX, pageY}) => {
-    setPoints((points) => [...points, {x: pageX, y: pageY}]);
+    if (points.length < 2) {
+      setPoints((points) => [...points, {x: pageX, y: pageY}]);
+    }
+    else {
+      alert("you can't have more than 2 points on the pitch")
+      //TODO: More stylish and user friendly alert
+    }
   };
 
   return (
