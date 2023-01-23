@@ -1,0 +1,15 @@
+.kickpoint {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px #8A2515 dashed;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.kickpoint .point {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}

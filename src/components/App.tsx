@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/App.css';
-import { Pitch } from './Pitch';
+import Pitch from './Pitch';
 
 export class App extends React.Component {
   render() {
