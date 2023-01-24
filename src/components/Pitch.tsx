@@ -8,7 +8,7 @@ import Kickpoint from "./Kickpoint";
 
 export default function Pitch() {
   const [points, setPoints] = useState([]);
-
+ 
   const addKickPointOnClick = ({pageX, pageY}) => {
     if (points.length < 2) {
       setPoints((points) => [...points, {x: pageX, y: pageY}]);
@@ -26,9 +26,7 @@ export default function Pitch() {
             <Kickpoint pageX={point.x} pageY={point.y } />
           ))}    
       </div>
-      <div id="pitch-background">
-        <SVGComponent/>
-      </div> 
+      <SVGComponent/>
   </div>    
   )
 }

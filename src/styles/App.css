@@ -1,4 +1,4 @@
 .App {
-  margin: auto;
-  width: 70%;
+  display: flex;
+  font-family: "Lato", sans-serif;
 }
