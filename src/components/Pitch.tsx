@@ -20,13 +20,13 @@ export default function Pitch() {
   };
 
   return (
-    <div id="pitch" onClick={addKickPointOnClick}>
+    <div id="pitch">
       <div>
           {points.map((point) => (
             <Kickpoint pageX={point.x} pageY={point.y } />
           ))}    
       </div>
-      <SVGComponent/>
+      <SVGComponent onClick={addKickPointOnClick} />
   </div>    
   )
 }
