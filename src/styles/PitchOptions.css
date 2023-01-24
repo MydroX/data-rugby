@@ -10,10 +10,15 @@
   display: flex;
   list-style-type: none;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 30px 0;
   font-size: 1.2em;
 }
 
 .pitch-options li .checkbox {
   margin-left: 10px;
+  align-self: center;
+}
+
+.pitch-options li p {
+  max-width: 120px;
 }

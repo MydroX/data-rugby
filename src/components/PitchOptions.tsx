@@ -20,6 +20,10 @@ export default function PitchOptions() {
           <p className="option-property-name">Touche indirect</p>
           <Checkbox toggle onClick={handleClick}/>
         </li>
+        <li>
+          <p className="option-property-name">Ballon mort (indirect)</p>
+          <Checkbox toggle onClick={handleClick}/>
+        </li>
       </ul>
     )
 }
