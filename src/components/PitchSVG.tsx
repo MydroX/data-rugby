@@ -1,5 +1,4 @@
-import React, { MouseEventHandler } from "react";
-import Point from "../interface/Geometry";
+import React from "react";
 
 type SVGProps = {
   handleOnClick: any
