@@ -13,15 +13,11 @@ export default function PitchOptions() {
   return (
       <ul className="pitch-options">
         <li>
-          <p className="option-property-name">Touche direct</p>
+          <p className="option-property-name">Direct</p>
           <Checkbox toggle onClick={handleClick}/>
         </li>
         <li>
-          <p className="option-property-name">Touche indirect</p>
-          <Checkbox toggle onClick={handleClick}/>
-        </li>
-        <li>
-          <p className="option-property-name">Ballon mort (indirect)</p>
+          <p className="option-property-name">Indirect</p>
           <Checkbox toggle onClick={handleClick}/>
         </li>
       </ul>

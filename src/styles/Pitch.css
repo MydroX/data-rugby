@@ -2,11 +2,13 @@
   height: 100%;
   width: 100%;
   display: flex;
-  }
+}
 
 #pitch svg {
   align-self: center;
   display: block;
   margin: auto;
   max-height: 80vh;
+  width: 1000px;
+  min-width: 1000px;
 }

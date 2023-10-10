@@ -11,22 +11,17 @@ import "../styles/Pitch.css"
 type Point = {
   pointX: number;
   pointY: number;
+  pointXMeters: number;
+  pointYMeters: number;
 }
 
-type PointInMeters = {
-  x: number;
-  y: number;
-}
+const offsetXpx = 138;
+const offsetXm = 19.07;
 
+const pitchWidthPX = 1000;
+const pitchWidthM = 138.2;
 
 export default function Pitch() {
-  const widthPitchInMeters: number = 138.2;
-  const widthPitchInPixels: number = 1416.3125;
-  
-  let scale: number = 10; // In 1080p, 10px is equal to 1m
-  let scalePx: number = 1;
-  let offsetLeft: number = 196;
-  let offsetTop: number = 30;
   
   const svgRef = createRef<SVGSVGElement>();
   //TODO: Fix the position of the points when you resize
@@ -34,16 +29,14 @@ export default function Pitch() {
   const [pitchOriginCoordinates, setPitchOriginCoordinates] = useState<Point>();  
   
   const addKickPointOnClick = ({clientX, clientY}: MouseEvent) => {
-    console.log("Creating point...")
     if (points.length < 2) {
       getPitchPosition()
       getPitchPosition()
-      setPoints((points) => [...points, {pointX: clientX, pointY: clientY}]);
+      setPoints((points) => [...points, {pointX: clientX, pointY: clientY, pointXMeters: (clientX * pitchWidthM) / pitchWidthPX, pointYMeters: (clientY * pitchWidthM) / pitchWidthPX}]);
       if (pitchOriginCoordinates !== undefined) {
         // TODO: send kick
-        console.log("pitch x: ", pitchOriginCoordinates.pointX)
-        console.log("x: ", Math.round((clientX - pitchOriginCoordinates.pointX)/scale))
-        // console.log("y: ", Math.round((clientY - pitchOriginCoordinates.pointY)/scale))
+        console.log("x: ", clientX)
+        console.log("en metre : ", Math.round(((clientX - pitchOriginCoordinates.pointX - offsetXpx) * pitchWidthM) / pitchWidthPX))
       }
     }
     else {
@@ -53,23 +46,10 @@ export default function Pitch() {
   };
   
   const getPitchPosition = () => {
-    console.log("get position pitch...")
     if (svgRef.current){
       let originPitch = svgRef.current.getBoundingClientRect()
-      console.log("bounding rect : ", originPitch)
-
-      scale = originPitch.width / widthPitchInMeters;
-      scalePx = widthPitchInPixels / originPitch.width;
-
-      offsetLeft = offsetLeft / scalePx;
-      offsetTop = offsetTop / scalePx;
-
       if (originPitch != null) {
-        // console.log("pitch left: ",originPitch.left,"pitch offset: ", offsetLeft);
-        // console.log("top: ", originPitch.top, offsetTop);
-
-        setPitchOriginCoordinates({pointX: (originPitch.left + offsetLeft), pointY: (originPitch.top + offsetTop)});
-        console.log("pitch x: ", pitchOriginCoordinates?.pointX)
+        setPitchOriginCoordinates({pointX: (originPitch.left), pointY: (originPitch.top), pointXMeters: 0, pointYMeters: 0});
       }
     }
   };
